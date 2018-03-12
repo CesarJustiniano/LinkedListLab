@@ -180,6 +180,5 @@ public class SLList<E> extends AbstractSLList<E> {
 	public Node<E> createNewNode() {
 		return new SNode<E>();
 	}
-	int count = 0;
 
 }
