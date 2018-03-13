@@ -1,5 +1,7 @@
 package indexList;
 
+import java.lang.reflect.Array;
+
 import linkedLists.LinkedList;
 import linkedLists.Node;
 
@@ -119,6 +121,37 @@ public class LLIndexList<E> implements IndexList<E> {
 		E etr = ntc.getElement(); 
 		ntc.setElement(e); 
 		return etr; 
+	}
+	
+	public <E> E[] toArray(E[] arr){
+		if(arr.length < this.size()){
+			arr = (E[]) Array.newInstance(arr.getClass().getComponentType(), this.size());
+		}
+		else if(arr.length > this.size()){
+			for(int i = this.size();i<arr.length;i++){
+				arr[i] = null;
+			}
+		}
+		
+		for(int i = 0;i<this.size();i++){
+			arr[i] = (E) this.getDataNodeAtPosition(i);
+		}
+		
+		return arr;
+	}
+	
+	public Object[] toArray(){
+		Object[] nodoArray = new Object[this.size()];
+		Node<E> current = internalLL.getFirstNode();
+		
+		int i = 0;
+		while(current != null){
+			nodoArray[i] = current.getElement();
+			current = internalLL.getNodeAfter(current);
+			i++;
+		}
+		
+		return nodoArray;
 	}
 	
 

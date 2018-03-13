@@ -2,7 +2,7 @@ package linkedLists;
 
 import java.util.NoSuchElementException;
 
-public interface LinkedList<E> {
+public interface LinkedList<E> extends Cloneable  {
 	
 	/**
 	 * Determines the number of nodes currently in the linked list. 
@@ -80,5 +80,9 @@ public interface LinkedList<E> {
 	 * @return reference to the new node instance. 
 	 */
 	Node<E> createNewNode(); 
+	
+	//public Object clone() throws CloneNotSupportedException;
+	//With this class it should make all the classes to use this method. 
+	//Each class will make their own clones with different kinds of method.
 
 }
